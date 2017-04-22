@@ -1,0 +1,3 @@
+## INSIRA O BINÁRIO DO youtube-dl AQUI!
+
+## INSIRA O BINÁRIO DO FFmpeg AQUI!
