@@ -40,7 +40,6 @@ import subprocess
 from GlobalVars import GlobalVars
 from DownloaderClass import Downloader
 from MessageBoxClass import ShowMessageBox
-from UpdaterClass import Updater
 
 # Definindo a codificação padrão para UTF-8.
 # ==========================================
@@ -90,14 +89,14 @@ class WindowHandler(object):
 		programLocation = os.getcwdu()
 		GlobalVars.BinFolder = "%s%s%s" % (programLocation, self.div, "bin")
 
-		GlobalVars.Youtube_dl = "%s%s%s" % (GlobalVars.BinFolder, self.div, GlobalVars.ExecutableName1)
-		ffmpegBin = "%s%s%s" % (GlobalVars.BinFolder, self.div, GlobalVars.ExecutableName2)
+		GlobalVars.Youtube_dl = "%s%s%s" % (GlobalVars.BinFolder, self.div, "youtube-dl.exe")
+		ffmpegBin = "%s%s%s" % (GlobalVars.BinFolder, self.div, "ffmpeg.exe")
 
 		if not os.path.isfile(GlobalVars.Youtube_dl):
 			self.messageBox.show(u"Erro!", 
 				QtGui.QMessageBox.Critical, 
-				u"Binário '%s' não está presente na pasta /bin!" % (GlobalVars.ExecutableName1), 
-				u"É necessário que o binário '%s' esteja presente na pasta /bin para" % (GlobalVars.ExecutableName1) +
+				u"Binário 'youtube-dl.exe' não está presente na pasta /bin!", 
+				u"É necessário que o binário 'youtube-dl.exe' esteja presente na pasta /bin para" +
 				" realizar o download dos vídeos!",
 				QtGui.QMessageBox.Ok, 
 				1)
@@ -105,7 +104,7 @@ class WindowHandler(object):
 		if not os.path.isfile(ffmpegBin):
 			self.messageBox.show(u"Aviso!", 
 				QtGui.QMessageBox.Warning, 
-				u"Binário '%s' não está presente na pasta /bin!" % (GlobalVars.ExecutableName2), 
+				u"Binário 'ffmpeg.exe' não está presente na pasta /bin!", 
 				u"O programa não poderá fazer conversões de formatos sem o ffmpeg!",
 				QtGui.QMessageBox.Ok, 
 				0)
@@ -137,7 +136,7 @@ class WindowHandler(object):
 	# Inserindo a pasta de destino padrão
 	# ===================================
 	def setDefaultDir(self):
-		self.ui.lineEdit_2.setText("%s%s%s" % (home_dir, self.div, GlobalVars.SaveFolder))
+		self.ui.lineEdit_2.setText("%s%s%s" % (home_dir, self.div, "SVD"))
 
 	# Saindo do programa
 	# ==================
@@ -226,19 +225,12 @@ class WindowHandler(object):
 
 			self.freezeProgramFields(True)
 			# -----------------------------------------------
-			update = Updater()
-			updateStatus = update.Youtube_DL()
+			self.updateCommand = ("%s %s" % (GlobalVars.Youtube_dl, "-U")).encode(sys.getfilesystemencoding())
+			updateStatus = subprocess.call(self.updateCommand)
 			# -----------------------------------------------
 			self.freezeProgramFields(False)
 
-			if updateStatus:
-				print(u"Versão atual: ", end="")
-				subprocess.call("%s %s" % (GlobalVars.ExecutableName1, "--version"))
-				print(u"\n[SVD] Atualização do youtube-dl concluída!")
-				print(u"------------------------------------------")
-			else:
-				print(u"\n[SVD] Não foi possível atualizar o youtube-dl!")
-				print(u"----------------------------------------------")
+			print(u"\n[SVD] Atualização do youtube-dl concluída!")
 		except Exception as e:
 			print(u"\n[SVD] Erro ao tentar atualizar o youtube-dl!")
 			print(u"[SVD] Erro: %s" % (e))

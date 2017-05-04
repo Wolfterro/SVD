@@ -24,16 +24,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-# Imports gerais
-# ==============
-import platform
-
 # Classe de variáveis globais
 # ===========================
 class GlobalVars:
 	# Variáveis globais
 	# -----------------
-	Version = "1.1"
+	Version = "1.0"
 	Ui = None
 	MainWindow = None
 	
@@ -43,16 +39,6 @@ class GlobalVars:
 
 	BinFolder = "bin"
 	Youtube_dl = ""
-	if platform.system() == "Windows":
-		ExecutableName1 = "youtube-dl.exe"
-		ExecutableName2 = "ffmpeg.exe"
-		YtDlLatestVersionURL = "https://yt-dl.org/downloads/latest/youtube-dl.exe"
-	else:
-		ExecutableName1 = "youtube-dl"
-		ExecutableName2 = "ffmpeg"
-		YtDlLatestVersionURL = "https://yt-dl.org/downloads/latest/youtube-dl"
-
-	UserAgent = "SVD/1.0"
 
 	PossibleSaveOptions = ["MP3 (Conversão)", "WAV (Conversão)", "MP4", 
 	"WEBM", "MKV", "3GP", "MP4 (Conversão)", "WEBM (Conversão)", "MKV (Conversão)"]

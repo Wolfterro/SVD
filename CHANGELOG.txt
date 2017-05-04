@@ -1,0 +1,20 @@
+SVD - Simple Video Downloader
+=============================
+
+Faça download de vídeos do Youtube e outros websites suportados pelo youtube-dl!
+--------------------------------------------------------------------------------
+
+CHANGELOG:
+==========
+
+VERSÃO 1.1:
+- Adicionado novo método de atualização para o youtube-dl.
+--- A classe Updater irá se encarregar de fazer as atualizações, baixando novas versões do youtube-dl usando
+	urllib2 para baixar a versão mais atual do executável de acordo com o sistema operacional do usuário.
+
+#-------------------------------------------------------------------------------------------------------------------
+
+VERSÃO 1.0:
+- Versão inicial do programa.
+
+#-------------------------------------------------------------------------------------------------------------------

@@ -26,34 +26,29 @@ SOFTWARE.
 
 # Imports gerais
 # ==============
-import platform
+from __future__ import print_function
+from PyQt4 import QtCore, QtGui
 
-# Classe de variáveis globais
-# ===========================
-class GlobalVars:
-	# Variáveis globais
-	# -----------------
-	Version = "1.1"
-	Ui = None
-	MainWindow = None
-	
-	IconName = "Icon.ico"
-	IconPath = "Icon.ico"
-	SaveFolder = "SVD"
+import os
+import sys
 
-	BinFolder = "bin"
-	Youtube_dl = ""
-	if platform.system() == "Windows":
-		ExecutableName1 = "youtube-dl.exe"
-		ExecutableName2 = "ffmpeg.exe"
-		YtDlLatestVersionURL = "https://yt-dl.org/downloads/latest/youtube-dl.exe"
-	else:
-		ExecutableName1 = "youtube-dl"
-		ExecutableName2 = "ffmpeg"
-		YtDlLatestVersionURL = "https://yt-dl.org/downloads/latest/youtube-dl"
+# Imports do programa
+# ===================
+from GlobalVars import GlobalVars
 
-	UserAgent = "SVD/1.0"
+# Classe da caixa de mensagens
+# ============================
+class ShowMessageBox(object):
+	def show(self, title, iconType, text, infoText, closeType, closeVal):
+		msg = QtGui.QMessageBox()
+		msg.setIcon(iconType)
+		msg.setWindowIcon(QtGui.QIcon(GlobalVars.IconPath))
 
-	PossibleSaveOptions = ["MP3 (Conversão)", "WAV (Conversão)", "MP4", 
-	"WEBM", "MKV", "3GP", "MP4 (Conversão)", "WEBM (Conversão)", "MKV (Conversão)"]
-	AudioFormats = ["mp3", "wav"]
+		msg.setText(text)
+		msg.setInformativeText(infoText)
+		msg.setWindowTitle(title)
+		msg.setStandardButtons(closeType)
+		msg.exec_()
+		
+		if closeVal != 0:
+			sys.exit(closeVal)
