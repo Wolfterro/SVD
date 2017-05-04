@@ -15,11 +15,13 @@
 
 ![SVD - Simple Video Downloader](http://i.imgur.com/FMJTT8x.png)
 
+### [Verifique o CHANGELOG.txt para maiores informações sobre novas versões!](https://raw.github.com/Wolfterro/SVD/master/CHANGELOG.txt)
+
 ### Atualizações:
 
 ##### As vezes é necessário que o youtube-dl esteja totalmente atualizado para que ele possa funcionar corretamente!
 
-##### Para atualizar o youtube-dl, abra o programa, clique no menu Atualizar e clique na opção youtube-dl. Caso exista uma atualização, o próprio youtube-dl irá se encarregar de fazer o processo de atualização.
+##### Para atualizar o youtube-dl, abra o programa, clique no menu Atualizar e clique na opção youtube-dl. O programa então irá fazer o download do executável mais novo que estiver disponível.
 
 ##### Caso queira atualizar manualmente, acesse a página de [download do youtube-dl](https://rg3.github.io/youtube-dl/download.html), Baixe a versão "Windows.exe" e cole na pasta /bin deste programa.
 
@@ -49,6 +51,6 @@
 ##### O programa, em seu formato binário, não requer o Python ou o PyInstaller instalados!
 
 ### Download:
-#### Windows: https://github.com/Wolfterro/SVD/releases/tag/v1.0-Windows
+#### Windows: https://github.com/Wolfterro/SVD/releases/tag/v1.1-Windows
 
 ##### Caso não possua o git e queira também baixar o repositório por completo, baixe através deste [Link](https://github.com/Wolfterro/SVD/archive/master.zip) ou clique em "Clone or Download", no topo da página.
